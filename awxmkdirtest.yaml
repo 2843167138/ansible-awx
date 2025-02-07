@@ -1,0 +1,12 @@
+---
+- name: Create a directory named ansibletest under /root
+  hosts: 114.80.94.133  # 这里假设你想对所有受控主机执行此操作；根据实际情况修改
+  vars:
+    ansible_ssh_port: 5858
+    ansible_user: root  # 或者其他具有执行权限的用户 
+  tasks:
+    - name: Ensure the ansibletest directory exists in /root
+      file:
+        path: /root/ansibletest
+        state: directory
+        mode: '0755'  # 设置目录权限为rwxr-xr-x
